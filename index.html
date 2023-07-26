@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <title>Job Listings</title>
+  <meta name="description" content="Description ...">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/script.js" type="module"></script>
+</head>
+
+<body>
+  <a href="#main-content" class="element-invisible element-focusable skip-link">Skip to main content</a>
+  <div class="page-layout">
+
+    <header class="page-header">
+      <h1>Job Listings</h1>
+      <form id="theme-picker" class="theme-picker">
+        <button type="button" id="btn-theme-toggle" class="btn-theme-toggle" aria-pressed>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-moon" aria-hidden="true">
+            <path
+              d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z">
+            </path>
+          </svg>
+          Dark Mode
+          <span class="btn-theme-state" aria-hidden="true"></span></button>
+      </form>
+    </header>
+
+    <main class="main" id="main-content">
+
+      <h2 class="visually-hidden">All Jobs</h2>
+      <p id="loading-message" class="loading-message"></p>
+      <ul class="job-list" id="job-list" role="list"></ul>
+    </main>
+
+    <footer class="page-footer">
+      <a href="https://github.com/chrisnajman/job-list" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+      <a href="https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt" target="_blank"
+        rel="noopener noreferrer">Frontend Mentor Project</a>
+    </footer>
+  </div>
+</body>
+
+</html>
+
+<template id="job-template">
+  <li class="job-card" data-job-container>
+    <img data-job-logo width="88" loading="lazy">
+    <div class="job-card-wrapper">
+      <div class="details-container" data-job-details>
+        <div class="job-details-1">
+          <dl role="list">
+            <dt class="visually-hidden">Company name</dt>
+            <dd data-company></dd>
+          </dl>
+          <ul role="list" class="status" data-job-status></ul>
+        </div>
+        <h3><span class="visually-hidden">Position: </span><span data-position></span></h3>
+        <dl role="list" data-status class="job-details-2">
+          <dt class="visually-hidden">Posted</dt>
+          <dd data-posted></dd>
+          <dt class="visually-hidden">Contract</dt>
+          <dd data-contract></dd>
+          <dt class="visually-hidden">Location</dt>
+          <dd data-location></dd>
+        </dl>
+      </div>
+      <div class="buttons-container">
+        <h3 class="visually-hidden">Languages and Tools</h3>
+        <button data-role></button>
+        <button data-level></button>
+      </div>
+    </div>
+  </li>
+</template>

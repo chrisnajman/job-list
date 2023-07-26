@@ -1,0 +1,334 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+:root {
+    --grid: grid;
+    --flex: flex;
+    --font-normal: 400;
+    --font-bold: 600;
+    --clr-header-footer: rgb(123, 142, 142);
+    --clr-button: rgb(4, 167, 167);
+    --clr-highlight: rgb(135, 206, 235);
+    --clr-link: rgb(215, 234, 241);
+    --clr-text-bg: rgba(44, 58, 58, 0.7);
+    --clr-featured: rgb(91, 164, 164);
+    --clr-main-heading: white;
+
+    /* Light theme */
+    --clr-body-bg: rgb(239, 250, 250);
+    --clr-card-bg: white;
+    --clr-icon-moon: white;
+    --clr-text: rgb(44, 58, 58);
+    --clr-shadow: -1px 4px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme {
+    --clr-body-bg: rgb(30, 39, 39);
+    --clr-card-bg: rgb(44, 58, 58);
+    --clr-icon-moon: rgb(30, 39, 39);
+    --clr-text: white;
+    --clr-shadow: -1px 4px 10px 0px rgba(0, 0, 0, 1);
+}
+
+html {
+    overflow-y: auto;
+    font-size: 16px;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    line-height: 1.5;
+    background-color: var(--clr-body-bg);
+    color: var(--clr-text);
+    font-weight: var(--font-normal);
+    font-size: clamp(0.9375rem, 0.8841rem + 0.3049vw, 1.25rem);
+}
+
+a {
+    color: var(--clr-link);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+h2,
+h3 {
+    line-height: 1.1;
+}
+
+h1 {
+    margin: 2.2em auto 1em auto;
+    background-color: var(--clr-text-bg);
+    color: var(--clr-main-heading);
+    padding: 0.5rem 1rem;
+    font-weight: var(--font-bold);
+    font-size: clamp(1.25rem, 0.8659rem + 2.1951vw, 3.5rem);
+}
+
+@media screen and (min-width: 600px) {
+    h1 {
+        margin-top: 1em;
+    }
+}
+
+:focus-visible {
+    outline: 3px solid var(--clr-highlight);
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    background-color: var(--clr-button);
+    color: white;
+    font-weight: var(--font-bold);
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.page-layout {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: var(--grid);
+    grid-template-rows: auto 1fr auto;
+}
+
+.page-header {
+    position: relative;
+
+    display: var(--flex);
+}
+
+.main {
+    padding: 4.75rem 1rem 5.75rem;
+}
+
+.page-header,
+.page-footer {
+    text-align: center;
+    background-color: var(--clr-header-footer);
+    background-image: url(../img/bg-header-desktop.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.page-footer {
+    padding: 3rem 1rem;
+}
+
+.page-footer {
+    display: var(--flex);
+    flex-direction: column;
+    gap: 1rem;
+
+    & a {
+        margin: 0 auto;
+        padding: 0.25rem 0.75rem;
+        background: var(--clr-text-bg);
+        color: white;
+
+        &::after {
+            content: " \27F6";
+        }
+    }
+}
+
+/** Job list **/
+.job-list {
+    width: 100%;
+    max-width: 81rem;
+    margin: 0 auto;
+    display: var(--grid);
+    gap: 5.5rem;
+}
+
+.job-card {
+    padding-top: 3.75rem;
+    padding: 3.75rem 1.5rem 2rem;
+    background-color: var(--clr-card-bg);
+    box-shadow: var(--clr-shadow);
+    border-left: 10px solid var(--clr-card-bg);
+    border-radius: 0.625rem;
+    position: relative;
+
+    @media screen and (min-width: 760px) {
+        padding: 2rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    & img {
+        width: 5.5rem;
+        height: 5.5rem;
+        position: absolute;
+        top: -2.75rem;
+        left: 1rem;
+        @media screen and (min-width: 760px) {
+            position: static;
+            width: 7.5rem;
+            height: 7.5rem;
+        }
+        @media screen and (min-width: 1024px) {
+            width: 8.5rem;
+            height: 8.5rem;
+        }
+    }
+
+    & .job-card-wrapper {
+        display: var(--flex);
+        flex-direction: column;
+        gap: 1rem;
+
+        @media screen and (min-width: 760px) {
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            gap: 2rem;
+        }
+    }
+
+    & .details-container {
+        display: var(--flex);
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    & .job-details-1,
+    & .job-details-2,
+    & .status {
+        font-weight: var(--font-bold);
+        display: var(--flex);
+        gap: 1rem;
+    }
+
+    & .pill {
+        padding: 0.125rem 0.5rem;
+        border-radius: 0.625rem;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    & .new-job {
+        background: red;
+    }
+
+    & .featured-job {
+        background: black;
+    }
+
+    & .job-details-2 {
+        border-bottom: 1px solid var(--clr-text);
+        padding-bottom: 1rem;
+
+        @media screen and (min-width: 760px) {
+            border-bottom: 0;
+        }
+    }
+
+    & .buttons-container {
+        display: var(--flex);
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        @media screen and (min-width: 760px) {
+            align-content: center;
+        }
+    }
+}
+
+.job-card:has(.new-job) {
+    border-left: 10px solid var(--clr-featured);
+}
+
+/** Theme picker **/
+.theme-picker {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: fit-content;
+}
+
+.icon-moon {
+    width: 1.375rem;
+    height: 1.375rem;
+    margin-right: 0.5rem;
+}
+
+.btn-theme-toggle {
+    display: var(--flex);
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin: 0 0 0 0.75rem;
+    border-radius: 0 0 0 0.5rem;
+    box-shadow: var(--clr-shadow);
+}
+
+[aria-pressed] .icon-moon {
+    fill: var(--clr-icon-moon);
+}
+
+[aria-pressed="false"] .btn-theme-state::after {
+    content: ": off";
+}
+[aria-pressed="true"] .btn-theme-state::after {
+    content: ": on";
+}
+
+/* Loading message */
+.loading-message {
+    padding-top: 1rem;
+    text-align: center;
+    font-size: 1.75rem;
+}
+
+/* screenreader only */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(0);
+    border: 0;
+}
+
+/* Skip link */
+.skip-link {
+    background-color: var(--clr-button);
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 0.625rem 0; /* 10px */
+}
+.element-invisible {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    z-index: 10;
+}
+.element-invisible.element-focusable:active,
+.element-invisible.element-focusable:focus {
+    clip: auto;
+    height: auto;
+    overflow: visible;
+}
